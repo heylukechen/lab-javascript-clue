@@ -66,25 +66,24 @@ const suspectsArray = [
 
 // Rooms Array
 const roomsArray = [
-  "Dining Room",
-  "Conservatory",
-  "Kitchen",
-  "Study",
-  "Library",
-  "Billiard Room",
-  "Lounge",
-  "Ballroom",
-  "Hall",
-  "Spa",
-  "Living Room",
-  "Observatory",
-  "Theater",
-  "Guest House",
-  "Patio",
+  {name:"Dining Room"},
+  {name:"Conservatory"},
+  {name:"Kitchen"},
+  {name:"Study"},
+  {name:"Library"},
+  {name:"Billiard Room"},
+  {name:"Lounge"},
+  {name:"Ballroom"},
+  {name:"Hall"},
+  {name:"Spa"},
+  {name:"Living Room"},
+  {name:"Observatory"},
+  {name:"Theater"},
+  {name:"Guest House"},
+  {name:"Patio"},
 ];
 
 // Weapons Array
-
 const weaponsArray = [
   {
     name: "rope",
@@ -126,10 +125,27 @@ const weaponsArray = [
 
 // ITERATION 2
 
-function selectRandom() {}
+function selectRandom(inputArray) {
+  let max = inputArray.length;
+  let randomNumber =  Math.floor(Math.random() * max); 
+  let randomPick = inputArray[randomNumber];
+  return randomPick;
+}
 
-function pickMystery() {}
+
+function pickMystery() {
+  return {
+    suspect: selectRandom(suspectsArray),
+    room: selectRandom(roomsArray),
+    weapon: selectRandom(weaponsArray),
+  }
+}
 
 // ITERATION 3
 
-function revealMystery() {}
+function revealMystery(envelope) {
+  return message = `${envelope.suspect.firstName} ${envelope.suspect.lastName} killed Mr. Boddy using the ${envelope.weapon.name} in the ${envelope.room.name}!`;
+}
+
+
+console.log(revealMystery(pickMystery()));
